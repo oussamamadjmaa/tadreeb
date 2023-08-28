@@ -41,7 +41,7 @@
         @endlangrtl
         <link rel="stylesheet" href="{{asset($assetsPath.'/css/style.css')}}">
         <link rel="stylesheet" href="{{asset($assetsPath.'/css/responsive.css')}}">
-
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
         <link rel="stylesheet" href="{{asset('assets/css/colors/switch.css')}}">
         <link href="{{asset('assets/css/colors/color-2.css')}}" rel="alternate stylesheet" type="text/css"
