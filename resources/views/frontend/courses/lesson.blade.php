@@ -53,14 +53,23 @@
             display: flex;
             justify-content: space-between;
             padding: 1rem;
-            right: 475px;
-            left: 0;
+            right: 0;
+            left: 475px;
             margin: 0 auto;
             border-top: solid 1px #f1f1f1;
             color: #666;
         }
 
+        [dir=rtl] .next-prev-btns {
+            right: 475px;
+            left: 0;
+        }
+
         .next-prev-btns #next {
+            margin-left: auto;
+        }
+        [dir=rtl] .next-prev-btns #next {
+            margin-left: unset;
             margin-right: auto;
         }
 
@@ -81,6 +90,8 @@
             background: transparent;
             border-bottom: 1px solid #f1f1f1;
             border-radius: 0;
+            margin: 0;
+            padding: 1rem;
         }
 
         .course-timeline-list li:hover {
@@ -103,7 +114,6 @@
             line-height: 32px;
             font-size: 16px;
             position: relative;
-            top: -6px;
         }
 
         [dir=rtl] .course-timeline-list li .icon_ {
@@ -135,10 +145,18 @@
             right: 0;
         }
 
+        .course-timeline-list li span {
+            float: unset;
+        }
+
         .course-timeline-list li .checkicon {
             font-size: 16px;
             margin: 0;
-            margin-top: 4px;
+            margin-top: 7px;
+            float: right;
+        }
+
+        [dir=rtl] .course-timeline-list li .checkicon {
             float: left;
         }
 
@@ -147,6 +165,7 @@
             font-size: 17px;
             font-weight: 500;
             text-transform: none;
+            vertical-align: middle;
         }
 
         .course-details-section {
@@ -161,13 +180,21 @@
             z-index: 999;
             padding: 16px 5px;
             color: #ff3333;
-            right: 475px;
+            left: 475px;
             cursor: pointer;
             transition: 0.25s;
         }
 
+        [dir=rtl] .tgs-btn {
+            left: unset;
+            right: 475px;
+        }
+
         .tgs-btn i {
             transition: 0.25s;
+        }
+
+        [dir=rtl] .tgs-btn i {
             transform: rotate(180deg);
         }
 
@@ -176,10 +203,19 @@
         }
 
         .toggle-lesson-sidebar .tgs-btn {
+            left: 0;
+        }
+
+        [dir=rtl] .toggle-lesson-sidebar .tgs-btn {
+            left: unset;
             right: 0;
         }
 
         .toggle-lesson-sidebar .tgs-btn i {
+            transform: rotate(180deg);
+        }
+
+        [dir=rtl] .toggle-lesson-sidebar .tgs-btn i {
             transform: rotate(0deg);
         }
 
@@ -312,16 +348,23 @@
             .lesson-sidebar .sidebar {
                 width: 299px;
             }
-
             .tgs-btn {
+                left: 0;
+            }
+            [dir=rtl] .tgs-btn {
+                left: unset;
                 right: 0;
             }
 
-            .tgs-btn i {
+            [dir=rtl] .tgs-btn i {
                 transform: rotate(0deg);
             }
 
             .next-prev-btns {
+                left: 0;
+            }
+            [dir=rtl] .next-prev-btns {
+                left: unset;
                 right: 0;
             }
 
@@ -330,10 +373,16 @@
             }
 
             .toggle-lesson-sidebar .tgs-btn, .toggle-lesson-sidebar .next-prev-btns {
+                right: unset;
+                left: 299px;
+            }
+
+            [dir=rtl] .toggle-lesson-sidebar .tgs-btn, .toggle-lesson-sidebar .next-prev-btns {
+                left: unset;
                 right: 299px;
             }
 
-            .toggle-lesson-sidebar .tgs-btn i {
+            [dir=rtl] .toggle-lesson-sidebar .tgs-btn i {
                 transform: rotate(180deg);
             }
         }
