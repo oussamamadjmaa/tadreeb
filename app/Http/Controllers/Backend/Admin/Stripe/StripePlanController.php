@@ -6,10 +6,10 @@ use App\Helpers\Payments\Stripe\StripeWrapper;
 use App\Http\Controllers\Controller;
 use App\Models\Bundle;
 use App\Models\Course;
-use App\Models\Stripe\StripePlan;
-use App\Models\Stripe\SubscribeCourse;
-use App\Models\Stripe\SubscribeBundle;
-use App\Models\Stripe\StripeProduct;
+use App\Models\stripe\StripePlan;
+use App\Models\stripe\SubscribeCourse;
+use App\Models\stripe\SubscribeBundle;
+use App\Models\stripe\StripeProduct;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -180,7 +180,7 @@ class StripePlanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Stripe\StripePlan $plan
+     * @param \App\Models\stripe\StripePlan $plan
      * @return \Illuminate\Http\Response
      */
     public function show(StripePlan $plan)
@@ -194,7 +194,7 @@ class StripePlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Stripe\StripePlan $plan
+     * @param \App\Models\stripe\StripePlan $plan
      * @return \Illuminate\Http\Response
      */
     public function edit(StripePlan $plan)
@@ -228,7 +228,7 @@ class StripePlanController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Stripe\StripePlan $plan
+     * @param \App\Models\stripe\StripePlan $plan
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, StripePlan $plan)
@@ -277,7 +277,7 @@ class StripePlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Stripe\StripePlan $plan
+     * @param \App\Models\stripe\StripePlan $plan
      * @return \Illuminate\Http\Response
      */
     public function destroy(StripePlan $plan)

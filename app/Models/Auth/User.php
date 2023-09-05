@@ -11,7 +11,7 @@ use App\Models\LessonSlotBooking;
 use App\Models\Media;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Stripe\StripePlan;
+use App\Models\stripe\StripePlan;
 use App\Models\stripe\Subscription;
 use App\Models\stripe\UserCourses;
 use App\Models\Traits\Uuid;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Stripe;
+namespace App\Models\stripe;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

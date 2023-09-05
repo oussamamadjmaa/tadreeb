@@ -493,13 +493,13 @@ if(!function_exists('courseOrBundlePlanExits')){
     {
         $result = false;
         if($courseId){
-            $Course = App\Models\Stripe\SubscribeCourse::where('course_id','=',$courseId)->first();
+            $Course = App\Models\stripe\SubscribeCourse::where('course_id','=',$courseId)->first();
             if($Course){
                 $result = true;
             }
         }
         if($bundleId){
-            $bundleCourse = App\Models\Stripe\SubscribeBundle::where('bundle_id','=',$bundleId)->first();
+            $bundleCourse = App\Models\stripe\SubscribeBundle::where('bundle_id','=',$bundleId)->first();
             if($bundleCourse){
                 $result = true;
             }
@@ -517,13 +517,13 @@ if(!function_exists('courseOrBundleExpire')){
 
         $result = true;
         if($courseId){
-            $courseEx = App\Models\Stripe\UserCourses::where('user_id',Auth::id())->where('course_id','=',$courseId)->whereDate('expire_at','>=',Carbon::now())->first();
+            $courseEx = App\Models\stripe\UserCourses::where('user_id',Auth::id())->where('course_id','=',$courseId)->whereDate('expire_at','>=',Carbon::now())->first();
             if($courseEx==null){
                 $result = false;
             }
         }
         if($bundleId){
-            $bundleEx = App\Models\Stripe\UserCourses::where('user_id',Auth::id())->where('bundle_id','=',$bundleId)->whereDate('expire_at','>=',Carbon::now())->first();
+            $bundleEx = App\Models\stripe\UserCourses::where('user_id',Auth::id())->where('bundle_id','=',$bundleId)->whereDate('expire_at','>=',Carbon::now())->first();
             if($bundleEx==null){
                 $result = false;
             }

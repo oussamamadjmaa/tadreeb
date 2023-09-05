@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Stripe\StripePlan;
+use App\Models\stripe\StripePlan;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller

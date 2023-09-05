@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Stripe;
+namespace App\Models\stripe;
 
 use App\Models\Bundle;
 use Illuminate\Database\Eloquent\Model;

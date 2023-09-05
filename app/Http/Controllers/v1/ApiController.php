@@ -34,7 +34,7 @@ use App\Models\QuestionsOption;
 use App\Models\Reason;
 use App\Models\Review;
 use App\Models\Sponsor;
-use App\Models\Stripe\StripePlan;
+use App\Models\stripe\StripePlan;
 use App\Models\System\Session;
 use App\Models\Tag;
 use App\Models\Tax;
