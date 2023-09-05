@@ -704,6 +704,13 @@
 
                         </div>
                         <div class="course-meta_">
+                            @if (($purchased_course || auth()->user()->hasRole(['teacher', 'administrator'])) && ($course->recording_url))
+                            <div class="course-meta___item">
+                                <span class="icon_"><i class="fa fa-link"></i></span>
+                                <span class="title ">{{ trans('labels.backend.courses.fields.recording_url') }}: </span>
+                                <span class="type"><a href="{{ $course->recording_url }}" target="_blank">@lang('labels.frontend.course.go')</a></span>
+                            </div>
+                            @endif
                             <div class="course-meta___item">
                                 <span class="icon_"><i class="far fa-calendar"></i></span>
                                 <span class="title ">{{ trans('labels.backend.courses.fields.start_date') }}: </span>

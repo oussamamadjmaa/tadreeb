@@ -43,6 +43,7 @@
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
             padding-top: 3rem;
         }
+
         .next-prev-btns {
             position: fixed;
             bottom: 0;
@@ -68,6 +69,7 @@
         .next-prev-btns #next {
             margin-left: auto;
         }
+
         [dir=rtl] .next-prev-btns #next {
             margin-left: unset;
             margin-right: auto;
@@ -223,6 +225,43 @@
             right: 0;
         }
 
+        .lesson-header {
+            position: fixed;
+            left: 475px;
+            right: 0;
+            background: #f0434a;
+            height: 61px;
+        }
+
+        .lesson-header__inner {
+            position: relative;
+            max-width: 768px;
+            margin: 0 auto;
+            height: 100%;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .lesson-header a.back-course {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 61px;
+            color: #fff;
+            background: #c34d52;
+            font-size: 23px;
+        }
+
+        .lesson-header__inner h3 {
+            margin: 0;
+            font-size: 21px;
+        }
+
         .test-form {
             color: #333333;
         }
@@ -348,9 +387,11 @@
             .lesson-sidebar .sidebar {
                 width: 299px;
             }
+
             .tgs-btn {
                 left: 0;
             }
+
             [dir=rtl] .tgs-btn {
                 left: unset;
                 right: 0;
@@ -363,6 +404,7 @@
             .next-prev-btns {
                 left: 0;
             }
+
             [dir=rtl] .next-prev-btns {
                 left: unset;
                 right: 0;
@@ -372,12 +414,14 @@
                 flex-basis: 299px;
             }
 
-            .toggle-lesson-sidebar .tgs-btn, .toggle-lesson-sidebar .next-prev-btns {
+            .toggle-lesson-sidebar .tgs-btn,
+            .toggle-lesson-sidebar .next-prev-btns {
                 right: unset;
                 left: 299px;
             }
 
-            [dir=rtl] .toggle-lesson-sidebar .tgs-btn, .toggle-lesson-sidebar .next-prev-btns {
+            [dir=rtl] .toggle-lesson-sidebar .tgs-btn,
+            .toggle-lesson-sidebar .next-prev-btns {
                 left: unset;
                 right: 299px;
             }
@@ -391,12 +435,19 @@
 
 @section('content')
     <!-- Start of course details section
-                            ============================================= -->
+                                ============================================= -->
     <section id="course-details" class="course-details-section">
         <div>
             <div class="lesson-container">
                 <div class="tgs-btn">
                     <i class="fa fa-arrow-left"></i>
+                </div>
+                <div class="lesson-header">
+                    <div class="lesson-header__inner">
+                        <a href="{{ route('courses.show', [$lesson->course->slug]) }}"><h3>{{ $lesson->course->title }}</h3></a>
+                    </div>
+                    <a href="{{ route('courses.show', [$lesson->course->slug]) }}" class="back-course"><i
+                            class="fa fa-times"></i></a>
                 </div>
                 <div class="lesson-sidebar">
                     <div id="sidebar" class="sidebar">
@@ -404,20 +455,20 @@
                             <div class="px-3">
                                 <div class="next-prev-btns">
                                     @if ($previous_lesson)
-                                    <div class="prev">
-                                        <a
-                                            href="{{ route('lessons.show', [$previous_lesson->course_id, $previous_lesson->model->slug]) }}">
-                                            <i class="fa fa-angle-double-right"></i> @lang('labels.frontend.course.prev')
-                                        </a>
-                                    </div>
+                                        <div class="prev">
+                                            <a
+                                                href="{{ route('lessons.show', [$previous_lesson->course_id, $previous_lesson->model->slug]) }}">
+                                                <i class="fa fa-angle-double-right"></i> @lang('labels.frontend.course.prev')
+                                            </a>
+                                        </div>
                                     @endif
 
-                                    @if ($next_lesson) 
-                                    <div id="next">
-                                        <a
-                                            href="{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->model->slug]) }}">
-                                            @lang('labels.frontend.course.next') <i class='fa fa-angle-double-left'></i> </a>
-                                    </div>
+                                    @if ($next_lesson)
+                                        <div id="next">
+                                            <a
+                                                href="{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->model->slug]) }}">
+                                                @lang('labels.frontend.course.next') <i class='fa fa-angle-double-left'></i> </a>
+                                        </div>
                                     @endif
                                 </div>
 
@@ -781,7 +832,7 @@
         </div>
     </section>
     <!-- End of course details section
-                        ============================================= -->
+                            ============================================= -->
 
 @endsection
 
