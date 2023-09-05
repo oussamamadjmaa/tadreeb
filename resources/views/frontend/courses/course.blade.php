@@ -725,7 +725,7 @@
                                 <span class="type ">{{ $course->level ?? 'لا يوجد' }}</span>
                             </div>
                         </div>
-                        @if ($recent_news->count() > 0)
+                        @if (false && $recent_news->count() > 0)
                             <div class="side-bar-widget">
                                 <h2 class="widget-title text-capitalize">@lang('labels.frontend.course.recent_news')</h2>
                                 <div class="latest-news-posts">

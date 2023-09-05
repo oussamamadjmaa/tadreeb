@@ -48,6 +48,11 @@
     left: unset;
     right: -6px;
 }
+
+.course-meta___item:hover .icon_:after {
+    left: 0;
+    right: 0;
+}
 .course-meta___item .title{
     color: #81868a;
     font-weight: 900;
