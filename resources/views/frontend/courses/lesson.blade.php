@@ -26,7 +26,7 @@
             overflow: auto;
             flex: 1;
             padding: 0 1rem;
-            margin: 40px 0;
+            margin: 55.39px 0;
             padding-top: 3rem;
         }
 
@@ -36,30 +36,61 @@
         }
 
         .lesson-sidebar {
+            position: relative;
             overflow: auto;
             flex: 0 0 475px;
-        }
-        .lesson-sidebar {
-            box-shadow: 0 15px 30px 0 rgba(0,0,0,.1);
-            padding: 1rem;
+            transition: .25s;
+            box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
             padding-top: 3rem;
+        }
+        .next-prev-btns {
+            position: fixed;
+            bottom: 0;
+            z-index: 99999;
+            background: #fff;
+            max-width: 768px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            right: 475px;
+            left: 0;
+            margin: 0 auto;
+            border-top: solid 1px #f1f1f1;
+            color: #666;
+        }
+
+        .next-prev-btns #next {
+            margin-right: auto;
+        }
+
+        .lesson-sidebar .sidebar {
+            position: absolute;
+            top: 70PX;
+            right: 0;
+            width: 475px;
+            bottom: 0;
+            overflow: auto;
         }
 
         .course-timeline-list {
-            margin-top: 1rem!important;
+            margin-top: 1rem !important;
         }
+
         .course-timeline-list li {
             background: transparent;
-            border-bottom: solid 1px grey;
+            border-bottom: 1px solid #f1f1f1;
             border-radius: 0;
         }
 
         .course-timeline-list li:hover {
             background: transparent;
         }
+
         .course-timeline-list li:hover .title {
             color: #ff3333;
         }
+
         .course-timeline-list li .icon_ {
             width: 32px;
             height: 32px;
@@ -74,11 +105,13 @@
             position: relative;
             top: -6px;
         }
-        [dir=rtl] .course-timeline-list li .icon_{
+
+        [dir=rtl] .course-timeline-list li .icon_ {
             margin-right: 0;
             margin-left: 10px;
         }
-        .course-timeline-list li .icon_::after{
+
+        .course-timeline-list li .icon_::after {
             content: '';
             border: 1px solid #e74d57;
             width: 100%;
@@ -92,7 +125,7 @@
             border-radius: 50%;
         }
 
-        [dir=rtl] .course-timeline-list li .icon_::after{
+        [dir=rtl] .course-timeline-list li .icon_::after {
             left: unset;
             right: -6px;
         }
@@ -108,7 +141,8 @@
             margin-top: 4px;
             float: left;
         }
-        .course-timeline-list li .title{
+
+        .course-timeline-list li .title {
             color: #000;
             font-size: 17px;
             font-weight: 500;
@@ -117,6 +151,40 @@
 
         .course-details-section {
             padding: 0;
+        }
+
+        .tgs-btn {
+            position: fixed;
+            top: 30%;
+            background: #fff;
+            box-shadow: -5px 1px 18px 0px #0000002b;
+            z-index: 999;
+            padding: 16px 5px;
+            color: #ff3333;
+            right: 475px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .tgs-btn i {
+            transition: 0.25s;
+            transform: rotate(180deg);
+        }
+
+        .toggle-lesson-sidebar .lesson-sidebar {
+            flex-basis: 0;
+        }
+
+        .toggle-lesson-sidebar .tgs-btn {
+            right: 0;
+        }
+
+        .toggle-lesson-sidebar .tgs-btn i {
+            transform: rotate(0deg);
+        }
+
+        .toggle-lesson-sidebar .next-prev-btns {
+            right: 0;
         }
 
         .test-form {
@@ -236,63 +304,95 @@
         }
 
 
-        @media screen and (max-width: 768px) {}
+        @media screen and (max-width: 768px) {
+            .lesson-sidebar {
+                flex: 0 0 0;
+            }
+
+            .lesson-sidebar .sidebar {
+                width: 299px;
+            }
+
+            .tgs-btn {
+                right: 0;
+            }
+
+            .tgs-btn i {
+                transform: rotate(0deg);
+            }
+
+            .next-prev-btns {
+                right: 0;
+            }
+
+            .toggle-lesson-sidebar .lesson-sidebar {
+                flex-basis: 299px;
+            }
+
+            .toggle-lesson-sidebar .tgs-btn, .toggle-lesson-sidebar .next-prev-btns {
+                right: 299px;
+            }
+
+            .toggle-lesson-sidebar .tgs-btn i {
+                transform: rotate(180deg);
+            }
+        }
     </style>
 @endpush
 
 @section('content')
     <!-- Start of course details section
-            ============================================= -->
+                            ============================================= -->
     <section id="course-details" class="course-details-section">
         <div>
             <div class="lesson-container">
+                <div class="tgs-btn">
+                    <i class="fa fa-arrow-left"></i>
+                </div>
                 <div class="lesson-sidebar">
                     <div id="sidebar" class="sidebar">
                         <div class="course-details-category ul-li">
-                            @if ($previous_lesson)
-                                <p>
-                                    
-                                    <a class="btn btn-block gradient-bg font-weight-bold text-white"
-                                        href="{{ route('lessons.show', [$previous_lesson->course_id, $previous_lesson->model->slug]) }}">
-                                        <i class="fa fa-angle-double-right"></i> @lang('labels.frontend.course.prev')
-                                        
-                                    </a></p>
-                            @endif
+                            <div class="px-3">
+                                <div class="next-prev-btns">
+                                    @if ($previous_lesson)
+                                    <div class="prev">
+                                        <a
+                                            href="{{ route('lessons.show', [$previous_lesson->course_id, $previous_lesson->model->slug]) }}">
+                                            <i class="fa fa-angle-double-right"></i> @lang('labels.frontend.course.prev')
+                                        </a>
+                                    </div>
+                                    @endif
 
-                            <p id="nextButton">
-                                @if ($next_lesson)
-                                    @if ((int) config('lesson_timer') == 1 && $lesson->isCompleted())
-                                        <a class="btn btn-block gradient-bg font-weight-bold text-white"
-                                            href="{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->model->slug]) }}">
-                                            @lang('labels.frontend.course.next') <i class='fa fa-angle-double-left'></i>  </a>
-                                    @else
-                                        <a class="btn btn-block gradient-bg font-weight-bold text-white"
+                                    @if ($next_lesson) 
+                                    <div id="next">
+                                        <a
                                             href="{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->model->slug]) }}">
                                             @lang('labels.frontend.course.next') <i class='fa fa-angle-double-left'></i> </a>
-                                    @endif
-                                @endif
-
-                            </p>
-                            @if ($lesson->course->progress() == 100)
-                                @if (!$lesson->course->isUserCertified())
-                                    @if ($lesson->course->can_get_certificate())
-                                        <form method="post" action="{{ route('admin.certificates.generate') }}">
-                                            @csrf
-                                            <input type="hidden" value="{{ $lesson->course->id }}" name="course_id">
-                                            <button
-                                                class="btn btn-success btn-block text-white mb-3 text-uppercase font-weight-bold"
-                                                id="finish">@lang('labels.frontend.course.finish_course')</button>
-                                        </form>
-                                    @endif
-                                @else
-                                    <div class="alert alert-success">
-                                        @lang('labels.frontend.course.certified')
                                     </div>
+                                    @endif
+                                </div>
+
+                                @if ($lesson->course->progress() == 100)
+                                    @if (!$lesson->course->isUserCertified())
+                                        @if ($lesson->course->can_get_certificate())
+                                            <form method="post" action="{{ route('admin.certificates.generate') }}">
+                                                @csrf
+                                                <input type="hidden" value="{{ $lesson->course->id }}" name="course_id">
+                                                <button
+                                                    class="btn btn-success btn-block text-white mb-3 text-uppercase font-weight-bold"
+                                                    id="finish">@lang('labels.frontend.course.finish_course')</button>
+                                            </form>
+                                        @endif
+                                    @else
+                                        <div class="alert alert-success">
+                                            @lang('labels.frontend.course.certified')
+                                        </div>
+                                    @endif
                                 @endif
-                            @endif
 
 
-                            <span class="float-none">@lang('labels.frontend.course.course_timeline')</span>
+                                <span class="float-none">@lang('labels.frontend.course.course_timeline')</span>
+                            </div>
                             <ul class="course-timeline-list">
                                 @foreach ($lesson->course->courseTimeline()->orderBy('sequence')->get() as $key => $item)
                                     @if ($item->model && $item->model->published == 1)
@@ -307,7 +407,8 @@
                                                         - @lang('labels.frontend.course.test')</p>
                                                 @endif
                                                 @if (in_array($item->model->id, $completed_lessons))
-                                                    <span class="checkicon"><i class="fa text-success float-right fa-check-square"></i></span>
+                                                    <span class="checkicon"><i
+                                                            class="fa text-success float-right fa-check-square"></i></span>
                                                 @endif
                                             </a>
                                         </li>
@@ -378,7 +479,8 @@
                                 <div class="alert alert-info">@lang('labels.frontend.course.your_test_score')
                                     : {{ $test_result->test_result }}</div>
                                 @if (config('retest'))
-                                    <form action="{{ route('lessons.retest', [$test_result->test->slug]) }}" method="post">
+                                    <form action="{{ route('lessons.retest', [$test_result->test->slug]) }}"
+                                        method="post">
                                         @csrf
                                         <input type="hidden" name="result_id" value="{{ $test_result->id }}">
                                         <button type="submit" class="btn gradient-bg font-weight-bold text-white"
@@ -483,7 +585,8 @@
                                                                 <p class="my-auto"><span
                                                                         class="font-weight-bold">@lang('labels.frontend.course.live_lesson_meeting_date')</span>
                                                                     : {{ $lessonSlot->start_at->format('d-m-Y h:i A') }}
-                                                                    <strong>({{ config('zoom.timezone') }})</strong></p>
+                                                                    <strong>({{ config('zoom.timezone') }})</strong>
+                                                                </p>
                                                                 <p class="my-auto"><span
                                                                         class="font-weight-bold">@lang('labels.frontend.course.live_lesson_meeting_duration')</span>
                                                                     : {{ $lessonSlot->duration }}</p>
@@ -629,7 +732,7 @@
         </div>
     </section>
     <!-- End of course details section
-        ============================================= -->
+                        ============================================= -->
 
 @endsection
 
@@ -649,6 +752,10 @@
 
 
     <script>
+        $(document).on('click', '.tgs-btn', function() {
+            $('body').toggleClass('toggle-lesson-sidebar');
+        })
+
         @if ($lesson->mediaPDF)
             $(function() {
                 $("#myPDF").pdf({
@@ -810,20 +917,20 @@
                         @if ($test_exists && is_null($test_result))
                             $('#nextButton').html(
                                 "<a class='btn btn-block bg-danger font-weight-bold text-white' href='#'>@lang('labels.frontend.course.complete_test')</a>"
-                                )
+                            )
                         @else
                             @if ($next_lesson)
                                 $('#nextButton').html(
                                     "<a class='btn btn-block gradient-bg font-weight-bold text-white'" +
                                     " href='{{ route('lessons.show', [$next_lesson->course_id, $next_lesson->model->slug]) }}'>@lang('labels.frontend.course.next')<i class='fa fa-angle-double-right'></i> </a>"
-                                    );
+                                );
                             @else
                                 $('#nextButton').html(
                                     "<form method='post' action='{{ route('admin.certificates.generate') }}'>" +
                                     "<input type='hidden' name='_token' id='csrf-token' value='{{ Session::token() }}' />" +
                                     "<input type='hidden' value='{{ $lesson->course->id }}' name='course_id'> " +
                                     "<button class='btn btn-success btn-block text-white mb-3 text-uppercase font-weight-bold' id='finish'>@lang('labels.frontend.course.finish_course')</button></form>"
-                                    );
+                                );
                             @endif
 
                             @if (!$lesson->isCompleted())
