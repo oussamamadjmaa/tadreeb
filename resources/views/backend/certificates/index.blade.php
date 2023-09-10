@@ -31,15 +31,15 @@
                                     <tr>
                                         <td>{{$key}}</td>
                                         <td>{{$certificate->course->title}}</td>
-                                        <td>{{$certificate->course->progress() }}%</td>
+                                        <td>{{$certificate->course->bag_type == 2 ? 100 : $certificate->course->progress() }}%</td>
                                         <th>
-                                            @if($certificate->course->progress() == 100)
+                                            {{-- @if($certificate->course->progress() == 100) --}}
                                                 <a href="{{asset('storage/certificates/'.$certificate->url)}}" class="btn btn-success">
                                                     @lang('labels.backend.certificates.view') </a>
 
                                                 <a class="btn btn-primary" href="{{route('admin.certificates.download',['certificate_id'=>$certificate->id])}}">
                                                     @lang('labels.backend.certificates.download') </a>
-                                            @endif
+                                            {{-- @endif --}}
                                         </th>
                                     </tr>
                                 @endforeach

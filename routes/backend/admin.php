@@ -339,6 +339,13 @@ Route::group(['prefix'=> 'live-lessons'], function () {
 });
 Route::resource('live-lessons', 'LiveLessonController');
 
+//==== Live Lessons Attendace ====//
+Route::group(['prefix'=> 'course-attendance'], function () {
+    Route::get('data', ['uses' => 'Admin\CourseAttendanceController@getData', 'as' => 'course-attendance.get_data']);
+    Route::post('assign-certificate/{course}/{user}', ['uses' => 'Admin\CourseAttendanceController@assignCertificate', 'as' => 'course-attendance.assign_cert']);
+});
+Route::resource('course-attendance', 'Admin\CourseAttendanceController');
+
 
 //==== Live Lessons Slot ====//
 Route::group(['prefix'=> 'live-lesson-slots'], function () {

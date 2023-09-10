@@ -123,6 +123,12 @@
                                         </a>
                                     </li>
                                 @endcan
+                                <li class="nav-item ">
+                                    <a class="nav-link {{ $request->segment(2) == 'course-attendance' ? 'active' : '' }}"
+                                    href="{{ route('admin.course-attendance.index') }}">
+                                        <span class="title">@lang('Attendance and certificates')</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 

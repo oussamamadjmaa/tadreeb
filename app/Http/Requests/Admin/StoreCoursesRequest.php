@@ -15,6 +15,12 @@ class StoreCoursesRequest extends FormRequest
         return true;
     }
 
+    public function prepareForValidation() {
+        $this->merge([
+            'cert_price' => $this->cert_price ?: 0
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

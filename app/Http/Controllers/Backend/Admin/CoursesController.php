@@ -302,7 +302,7 @@ class CoursesController extends Controller
         }
 
 
-
+        
 
         if ((int)$request->price == 0) {
             $course->price = null;
