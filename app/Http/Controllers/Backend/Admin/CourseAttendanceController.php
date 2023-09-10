@@ -27,6 +27,8 @@ class CourseAttendanceController extends Controller
         }
         $courses = $courses = Course::has('category')->ofTeacher()->where('bag_type', 2)->pluck('title', 'id')->prepend('Please select', '');
 
+        $course = null;
+        
         if (request()->course_id != "") {
             $course = Course::find(request()->course_id);
         }
@@ -53,7 +55,7 @@ class CourseAttendanceController extends Controller
             ->addColumn('actions', function ($q) use ($request) {
                 $view = '';
                 
-                $attendanceDates = json_encode($q->attendances?->first()->attendance_dates ?? []);
+                $attendanceDates = json_encode($q->attendances->first() ? $q->attendances->first()->attendance_dates : []);
 
                 $view .= view('backend.datatable.action-attendance')
                 ->with(['courseId' => $request->course_id, 'userId' => $q->id, 'attendanceDates' => $attendanceDates])->render();
@@ -66,7 +68,7 @@ class CourseAttendanceController extends Controller
                 
                 return $view;
             })->addColumn('attendance_days', function($q) {
-                return count($q->attendances?->first()->attendance_dates ?? []);
+                return count($q->attendances->first() ? $q->attendances->first()->attendance_dates : []);
             })
             ->rawColumns(['actions'])
             ->make();

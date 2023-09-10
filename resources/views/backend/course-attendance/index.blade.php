@@ -50,7 +50,8 @@
         </div>
     </div>
     
-    <!-- Modal -->
+    @if ($course)
+        <!-- Modal -->
     <div class="modal fade" id="attendanceMakerModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -78,6 +79,7 @@
             </div>
         </div>
     </div>
+    @endif
 @stop
 
 @push('after-scripts')
