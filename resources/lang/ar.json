@@ -708,5 +708,7 @@
     "Åland Islands": "جزر آلاند",
     "Print certificate" : "طباعة الشهادة",
     "Certificate generated successfully": "تم طباعة الشهادة بنجاح",
-    "Attendance and certificates" : "التحضير والشهادات"
+    "Attendance and certificates" : "التحضير والشهادات",
+    "Attendance" : "الحضور",
+    "Attendance days" : "أيام الحضور"
 }

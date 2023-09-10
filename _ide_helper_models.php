@@ -10,6 +10,19 @@
  */
 
 
+namespace App\Models{
+/**
+ * App\Models\Attendance
+ *
+ * @property-read \App\Models\Course|null $course
+ * @property-read \App\Models\Auth\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance query()
+ */
+	class Attendance extends \Eloquent {}
+}
+
 namespace App\Models\Auth{
 /**
  * Class PasswordHistory.

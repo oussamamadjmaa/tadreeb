@@ -343,6 +343,7 @@ Route::resource('live-lessons', 'LiveLessonController');
 Route::group(['prefix'=> 'course-attendance'], function () {
     Route::get('data', ['uses' => 'Admin\CourseAttendanceController@getData', 'as' => 'course-attendance.get_data']);
     Route::post('assign-certificate/{course}/{user}', ['uses' => 'Admin\CourseAttendanceController@assignCertificate', 'as' => 'course-attendance.assign_cert']);
+    Route::post('save-student-attendance/{course}/{user}', ['uses' => 'Admin\CourseAttendanceController@saveStudentAttendance', 'as' => 'course-attendance.save_student_attendance']);
 });
 Route::resource('course-attendance', 'Admin\CourseAttendanceController');
 

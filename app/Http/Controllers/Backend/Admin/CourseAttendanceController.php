@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Backend\CertificateController;
 use App\Http\Controllers\Controller;
+use App\Models\Attendance;
 use App\Models\Auth\User;
 use App\Models\Course;
 use App\Models\CourseTimeline;
@@ -25,7 +26,11 @@ class CourseAttendanceController extends Controller
             return abort(401);
         }
         $courses = $courses = Course::has('category')->ofTeacher()->where('bag_type', 2)->pluck('title', 'id')->prepend('Please select', '');
-        return view('backend.course-attendance.index', compact('courses'));
+
+        if (request()->course_id != "") {
+            $course = Course::find(request()->course_id);
+        }
+        return view('backend.course-attendance.index', compact('courses', 'course'));
     }
 
     /**
@@ -40,20 +45,28 @@ class CourseAttendanceController extends Controller
 
 
         if ($request->course_id != "") {
-            $courseStudents = $courseStudents->where('id', $request->course_id)->first()->students()->withCount(['certificates' => fn($q) => $q->where('course_id', $request->course_id)]);
+            $courseStudents = $courseStudents->where('id', $request->course_id)->first()->students()->withCount(['certificates' => fn($q) => $q->where('course_id', $request->course_id)])->with(['attendances' => fn($q) => $q->where('course_id', $request->course_id)]);
         }
 
         return DataTables::of($courseStudents)
             ->addIndexColumn()
             ->addColumn('actions', function ($q) use ($request) {
                 $view = '';
+                
+                $attendanceDates = json_encode($q->attendances?->first()->attendance_dates ?? []);
+
+                $view .= view('backend.datatable.action-attendance')
+                ->with(['courseId' => $request->course_id, 'userId' => $q->id, 'attendanceDates' => $attendanceDates])->render();
+
 
                 if($q->certificates_count == 0) {
-                    $view = view('backend.datatable.action-assign-certificate')
+                    $view .= view('backend.datatable.action-assign-certificate')
                         ->with(['route' => route('admin.course-attendance.assign_cert', ['course' => $request->course_id, 'user' => $q->id])])->render();
                 }
                 
                 return $view;
+            })->addColumn('attendance_days', function($q) {
+                return count($q->attendances?->first()->attendance_dates ?? []);
             })
             ->rawColumns(['actions'])
             ->make();
@@ -63,6 +76,25 @@ class CourseAttendanceController extends Controller
         CertificateController::certificateGenerator($course, $user);
 
         return back()->withFlashSuccess(trans('Certificate generated successfully'));
+    }
+
+    public function saveStudentAttendance(Request $request, Course $course, User $user) {
+        $request->validate([
+            'attendance_dates' => 'nullable|array'
+        ]);
+
+        $dates = $request->attendance_dates ?: [];
+
+        $att = Attendance::where(['course_id' => $course->id, 'user_id' => $user->id])->exists();
+
+        if($att) {
+            Attendance::where(['course_id' => $course->id, 'user_id' => $user->id])->update(['attendance_dates' => $dates]);
+        }else {
+            $att = Attendance::create(['course_id' => $course->id, 'user_id' => $user->id, 'attendance_dates' => $dates]);
+        }
+
+
+        return response()->json(['status' => 200, 'attendance_dates' => json_encode($dates)]);
     }
 
     /**

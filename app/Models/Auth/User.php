@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models\Auth;
+
+use App\Models\Attendance;
 use App\Models\Bundle;
 use App\Models\Certificate;
 use App\Models\ChapterStudent;
@@ -182,6 +184,11 @@ class User extends Authenticatable
     public function certificates()
     {
         return $this->hasMany(Certificate::class);
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
     }
 
     public function pendingOrders()

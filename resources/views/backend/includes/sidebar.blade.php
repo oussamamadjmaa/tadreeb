@@ -123,12 +123,6 @@
                                         </a>
                                     </li>
                                 @endcan
-                                <li class="nav-item ">
-                                    <a class="nav-link {{ $request->segment(2) == 'course-attendance' ? 'active' : '' }}"
-                                    href="{{ route('admin.course-attendance.index') }}">
-                                        <span class="title">@lang('Attendance and certificates')</span>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
 
@@ -165,6 +159,13 @@
                         </a>
                     </li>
                 @endcan
+                <li class="nav-item ">
+                    <a class="nav-link {{ $request->segment(2) == 'course-attendance' ? 'active' : '' }}"
+                    href="{{ route('admin.course-attendance.index') }}">
+                        <i class="nav-icon icon-badge"></i>
+                        <span class="title">@lang('Attendance and certificates')</span>
+                    </a>
+                </li>
                 @if($logged_in_user->hasRole('teacher') || $logged_in_user->isAdmin())
                     <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern(['user/reports*']), 'open') }}">
                         <a class="nav-link nav-dropdown-toggle {{ active_class(Active::checkUriPattern('admin/*')) }}"
