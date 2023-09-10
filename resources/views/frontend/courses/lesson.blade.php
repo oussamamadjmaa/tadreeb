@@ -42,6 +42,7 @@
             transition: .25s;
             box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .1);
             padding-top: 3rem;
+            z-index: 2;
         }
 
         .next-prev-btns {
@@ -179,7 +180,7 @@
             top: 30%;
             background: #fff;
             box-shadow: -5px 1px 18px 0px #0000002b;
-            z-index: 999;
+            z-index: 999999;
             padding: 16px 5px;
             color: #ff3333;
             left: 475px;
@@ -231,6 +232,17 @@
             right: 0;
             background: #f0434a;
             height: 61px;
+            padding: 0 1rem;
+        }
+
+        [dir=rtl] .lesson-header {
+            left: 0;
+            right: 475px;
+        }
+
+        .toggle-lesson-sidebar .lesson-header {
+            left: 0;
+            right: 0;
         }
 
         .lesson-header__inner {
@@ -255,6 +267,11 @@
             color: #fff;
             background: #c34d52;
             font-size: 23px;
+        }
+
+        [dir=rtl] .lesson-header a.back-course {
+            right: unset;
+            left: 0;
         }
 
         .lesson-header__inner h3 {
@@ -392,15 +409,24 @@
                 left: 0;
             }
 
-            [dir=rtl] .tgs-btn {
-                left: unset;
-                right: 0;
+            .tgs-btn i {
+                transform: rotate(180deg);
             }
-
             [dir=rtl] .tgs-btn i {
                 transform: rotate(0deg);
             }
 
+            .toggle-lesson-sidebar .tgs-btn i {
+                transform: rotate(0);
+            }
+            [dir=rtl] .toggle-lesson-sidebar .tgs-btn i {
+                transform: rotate(180deg);
+            }
+
+            [dir=rtl] .tgs-btn {
+                left: unset;
+                right: 0;
+            }
             .next-prev-btns {
                 left: 0;
             }
@@ -428,6 +454,21 @@
 
             [dir=rtl] .toggle-lesson-sidebar .tgs-btn i {
                 transform: rotate(180deg);
+            }
+
+            .lesson-header, [dir=rtl] .lesson-header {
+                right: 0;
+                left: 0;
+            }
+
+            .toggle-lesson-sidebar .lesson-header {
+                right: 0;
+                left: 299px;
+            }
+
+            [dir=rtl] .toggle-lesson-sidebar .lesson-header {
+                right: 299px;
+                left: 0;
             }
         }
     </style>

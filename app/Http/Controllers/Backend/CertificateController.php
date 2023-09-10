@@ -49,12 +49,13 @@ class CertificateController extends Controller
             $query->where('id', \Auth::id());
         })
             ->where('id', '=', $request->course_id)->first();
+
         if (($course != null) && $course->can_get_certificate()  && ($course->progress() == 100)) {
             $certificate = Certificate::firstOrCreate([
                 'user_id' => auth()->user()->id,
                 'course_id' => $request->course_id
             ]);
-            $cert_image = $course->cert_image ? asset('storage/uploads/'.$course->cert_image) : asset("images/certificate.jpg");
+            $cert_image = $course->cert_image ? asset('storage/uploads/'.$course->cert_image) : asset("images/cert.jpg");
             $cert_data = ($course->cert_data) ? $course->cert_data : config('cert_data');
             $cert_data_main = config('cert_data');
             if(!is_array($cert_data)) $cert_data = json_decode($cert_data);
@@ -64,8 +65,9 @@ class CertificateController extends Controller
             $data = [
                 'name' => auth()->user()->name,
                 'course_name' => $course->title,
-                'date' => Carbon::now()->format('d M, Y'),
-                'cert_image' => $cert_image
+                'date' => Carbon::now()->format('Y/m/d'),
+                'cert_image' => $cert_image,
+                'teachers' => $course->teachers->pluck('name')->implode(',')
             ];
             $certificate_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '.pdf';
             $certificate->name = auth()->user()->name;
@@ -107,11 +109,12 @@ class CertificateController extends Controller
             $mpdf->autoScriptToLang = true;
             $mpdf->autoLangToFont = true;
             $mpdf->debug = true;
-            $html = view('certificate.index', compact('data', 'cert_data', 'cert_data_main', 'course'));
+            $html = view('certificate.index', compact('data', 'cert_data', 'cert_data_main', 'course', 'certificate'));
             $mpdf->WriteHTML($html);
-            //echo $mpdf->Output("$certificate_name", 'S');
+            // echo $mpdf->Output("$certificate_name", 'S');
             //return;
             $mpdf->Output(public_path('storage/certificates/' . $certificate_name), 'F');
+            // return $mpdf->Output($certificate_name, "I");
             return back()->withFlashSuccess(trans('alerts.frontend.course.completed'));
         }
         return abort(404);

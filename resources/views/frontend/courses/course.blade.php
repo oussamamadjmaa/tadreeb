@@ -704,7 +704,7 @@
 
                         </div>
                         <div class="course-meta_">
-                            @if (($purchased_course || auth()->user()->hasRole(['teacher', 'administrator'])) && ($course->recording_url))
+                            @if (($purchased_course || (auth()->check() && auth()->user()->hasRole(['teacher', 'administrator']))) && ($course->recording_url))
                             <div class="course-meta___item">
                                 <span class="icon_"><i class="fa fa-link"></i></span>
                                 <span class="title ">{{ trans('labels.backend.courses.fields.recording_url') }}: </span>
