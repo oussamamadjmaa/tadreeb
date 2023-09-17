@@ -114,7 +114,7 @@
                                         <div class="form-group row">
                                             {{ html()->label(__('labels.teacher.payment_details'))->class('col-md-2 form-control-label')->for('payment_details') }}
                                             <div class="col-md-10">
-                                                <select class="form-control" name="payment_method" id="payment_method" required>
+                                                <select class="form-control" name="payment_method" id="payment_method">
                                                     <option value="bank" {{ $accreditation_body->e3tmadProfile->payment_method == 'bank'?'selected':'' }}>{{ trans('labels.teacher.bank') }}</option>
                                                     <option value="paypal" {{ $accreditation_body->e3tmadProfile->payment_method == 'paypal'?'selected':'' }}>{{ trans('labels.teacher.paypal') }}</option>
                                                 </select>

@@ -15,7 +15,7 @@
         background-repeat: no-repeat;
         width: 100%;
         height: 100%;
-        padding-top: 57mm;
+        padding-top: 62mm;
         position: relative;
     }
 </style>
@@ -45,9 +45,9 @@
             <h2>{{$cert_data->text_4 ?? $cert_data_main->text_4}} {{$course->duration}} تدريبية</h2>
             <h2>{{$cert_data->text_5 ?? $cert_data_main->text_5}} {{$course->teachers->first()->name}}</h2>
             <h2 style="padding-top: 12px;">ونتمنى له دوام التوفيق والنجاح</h2> --}}
-            <h1 style="width: 70%; margin: 0 auto;font-size:26.5px;">تشهد الأمانة العامة للمنظمة العربية للهلال الأحمر والصليب الأحمر بأن المشارك/ة</h1>
+            <h1 style="width: 70%; margin: 0 auto;font-size:26.5px;">{{$cert_data->text_1 ?? $cert_data_main->text_1}}</h1>
             <h2 style="color: #000;font-size:25px;padding-top:1rem;">{{$data['name']}}</h2>
-            <h1 style="font-size:26.5px;padding-top:1rem;">قد حضر الدورة التدريبية على منصة المنظمة العربية للهلال الأحمر والصليب الأحمر للتدريب بعنوان</h1>
+            <h1 style="font-size:26.5px;padding-top:1rem;">{{$cert_data->text_2 ?? $cert_data_main->text_2}}</h1>
             <h2 style="color: #000;font-size:25px;padding-top:1rem;">{{$data['course_name']}}</h2>
             <h1 style="font-size:26.5px;padding-top:1rem;">(عن بعد) لمدة ({{$course->duration}}) بتاريخ <span dir=ltr>{{$course->start_date}}</span> - <span dir=ltr>{{$course->expire_at}}</span></h1>
         </div>

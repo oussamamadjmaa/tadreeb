@@ -36,7 +36,7 @@ class CertificateController extends Controller
             ->where('id', '=', $request->course_id)->first();
 
         if (($course != null) && $course->can_get_certificate()  && ($course->progress() == 100)) {
-            $this->certificateGenerator($course, auth()->user());
+            return $this->certificateGenerator($course, auth()->user());
             return back()->withFlashSuccess(trans('alerts.frontend.course.completed'));
         }
         return abort(404);
@@ -92,12 +92,11 @@ class CertificateController extends Controller
             'course_id' => $course->id
         ]);
         
-        $cert_image = $course->cert_image ? asset('storage/uploads/' . $course->cert_image) : asset("images/cert.png");
+        $cert_image = $course->cert_image ? asset('storage/uploads/' . $course->cert_image) : asset("images/cert.jpg");
         $cert_data = ($course->cert_data) ? $course->cert_data : config('cert_data');
         $cert_data_main = config('cert_data');
-        if (!is_array($cert_data)) $cert_data = json_decode($cert_data);
+        
         if (!is_array($cert_data_main)) $cert_data_main = json_decode($cert_data_main);
-
 
         $data = [
             'name' => $user->name,
@@ -154,7 +153,7 @@ class CertificateController extends Controller
         //return;
        
         $mpdf->Output(public_path('storage/certificates/' . $certificate_name), 'F');
-        // return $mpdf->Output($certificate_name, "I");
+        return $mpdf->Output($certificate_name, "I");
 
         return $mpdf;
     }

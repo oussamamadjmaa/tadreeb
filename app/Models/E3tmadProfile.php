@@ -19,13 +19,9 @@ class E3tmadProfile extends Model
     ];
 
     protected $casts = [
-        'payment_details' => 'array'
+        'payment_details' => 'object'
     ];
 
-    public function getPaymentDetailsAttribute($value)
-    {
-        return (is_array($value)) ? $value : (json_decode($value));
-    }
 
     /**
     * Get the teacher profile that owns the user.

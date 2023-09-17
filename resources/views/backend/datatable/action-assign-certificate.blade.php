@@ -1,5 +1,5 @@
-<div>
-    <form method="post" action="{{ $route }}">
+<div class="d-inline">
+    <form method="post" action="{{ $route }}" class="d-inline">
         @csrf
         <button
             class="btn btn-xs btn-success mb-1"

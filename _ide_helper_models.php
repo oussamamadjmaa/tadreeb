@@ -14,11 +14,21 @@ namespace App\Models{
 /**
  * App\Models\Attendance
  *
- * @property-read \App\Models\Course|null $course
- * @property-read \App\Models\Auth\User|null $user
+ * @property int $course_id
+ * @property int $user_id
+ * @property array $attendance_dates
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Course $course
+ * @property-read \App\Models\Auth\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Attendance newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Attendance newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Attendance query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance whereAttendanceDates($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance whereCourseId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance whereUserId($value)
  */
 	class Attendance extends \Eloquent {}
 }
@@ -138,6 +148,8 @@ namespace App\Models\Auth{
  * @property string|null $academic_rank
  * @property string|null $nationality
  * @property string|null $user_type
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Attendance[] $attendances
+ * @property-read int|null $attendances_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Bundle[] $bundles
  * @property-read int|null $bundles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Certificate[] $certificates
@@ -665,7 +677,7 @@ namespace App\Models{
  * @property int $bag_type
  * @property string $cert_price
  * @property string|null $cert_image
- * @property array|null $cert_data
+ * @property object|null $cert_data
  * @property string|null $level
  * @property string|null $voltage
  * @property string|null $duration
@@ -796,7 +808,7 @@ namespace App\Models{
  * @property string|null $twitter_link
  * @property string|null $linkedin_link
  * @property string $payment_method paypal,bank
- * @property array $payment_details
+ * @property object $payment_details
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string|null $deleted_at

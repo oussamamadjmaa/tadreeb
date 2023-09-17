@@ -30,7 +30,7 @@ class Course extends Model
     protected $fillable = ['category_id', 'title', 'slug', 'description', 'price', 'course_image','course_video', 'start_date', 'published', 'free','featured', 'trending', 'popular', 'meta_title', 'meta_description', 'meta_keywords', 'expire_at','strike', 'e3tmad_id','bag_type','cert_price','cert_image','cert_data','level','voltage','duration','recording_url','goals','requirements','outputs','target_group','sponsor_name'];
 
     protected $appends = ['image'];
-    protected $casts   = ['cert_data' => 'array'];
+    protected $casts   = ['cert_data' => 'object'];
 //    protected $dates = ['expire_at'];
 
 

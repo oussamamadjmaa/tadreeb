@@ -132,10 +132,10 @@ class E3tmadController extends Controller
         ];
         $data = [
             'user_id'           => $accreditation_body->id,
-            'facebook_link'     => request()->facebook_link,
-            'twitter_link'      => request()->twitter_link,
-            'linkedin_link'     => request()->linkedin_link,
-            'payment_method'    => request()->payment_method,
+            'facebook_link'     => request()->facebook_link??'',
+            'twitter_link'      => request()->twitter_link??'',
+            'linkedin_link'     => request()->linkedin_link??'',
+            'payment_method'    => request()->payment_method??'',
             'payment_details'   => json_encode($payment_details),
         ];
         E3tmadProfile::create($data);
@@ -153,7 +153,8 @@ class E3tmadController extends Controller
     public function edit($id)
     {
         $accreditation_body = User::with('e3tmadProfile')->findOrFail($id);
-        $payment_details = json_decode($accreditation_body->e3tmadProfile->payment_details) ?? [];
+        $payment_details = $accreditation_body->e3tmadProfile->payment_details ?? (object)[];
+        
         return view('backend.e3tmad.edit', compact('accreditation_body', 'payment_details'));
     }
 

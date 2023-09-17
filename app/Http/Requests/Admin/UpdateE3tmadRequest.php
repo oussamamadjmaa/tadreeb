@@ -37,12 +37,11 @@ class UpdateE3tmadRequest extends FormRequest
             'twitter_link'        => ['nullable', 'url'],
             'linkedin_link'       => ['nullable', 'url'],
             'payment_method'      => ['required'],
-            'bank_name'           => ['required_if:payment_method,bank'],
-            'ifsc_code'           => ['required_if:payment_method,bank'],
-            'account_number'      => ['required_if:payment_method,bank'],
-            'account_name'        => ['required_if:payment_method,bank'],
-            'paypal_email'        => ['required_if:payment_method,paypal'],
-
+            'bank_name'           => ['nullable'],
+            'ifsc_code'           => ['nullable'],
+            'account_number'      => ['nullable'],
+            'account_name'        => ['nullable'],
+            'paypal_email'        => ['nullable'],
         ];
     }
 }
