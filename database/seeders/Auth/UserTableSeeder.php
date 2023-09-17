@@ -24,9 +24,9 @@ class UserTableSeeder extends Seeder
 
         // Add the master administrator, user id of 1
         User::create([
-            'first_name'        => 'Admin',
-            'last_name'         => 'Istrator',
-            'email'             => 'admin@al-modareb.com',
+            'first_name'        => 'Administrator',
+            'last_name'         => '',
+            'email'             => 'admin@arco.com',
             'password'          => 'secret',
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed'         => true,
@@ -35,7 +35,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'first_name'        => 'Teacher',
             'last_name'         => 'User',
-            'email'             => 'teacher@al-modareb.com',
+            'email'             => 'teacher@arco.com',
             'password'          => 'secret',
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed'         => true,
@@ -44,7 +44,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'first_name'        => 'Student',
             'last_name'         => 'User',
-            'email'             => 'student@al-modareb.com',
+            'email'             => 'student@arco.com',
             'password'          => 'secret',
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed'         => true,
@@ -53,7 +53,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'first_name'        => 'Normal',
             'last_name'         => 'User',
-            'email'             => 'user@al-modareb.com',
+            'email'             => 'user@arco.com',
             'password'          => 'secret',
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed'         => true,
