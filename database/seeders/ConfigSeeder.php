@@ -71,7 +71,7 @@ class ConfigSeeder extends Seeder
         $sections_layout3 = json_encode(config('sections.layout_3'));
         $sections_layout4 = json_encode(config('sections.layout_4'));
         $data = [
-            'theme_layout' => 1,
+            'theme_layout' => 3,
             'font_color' => 'default',
             'layout_type' => 'wide',
             'layout_1' => $sections_layout1,

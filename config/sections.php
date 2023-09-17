@@ -101,11 +101,11 @@ return [
         ],
         'popular_courses' => [
             'title' => 'Popular Courses',
-            'status' => 1
+            'status' => 0
         ],
         'reasons' => [
             'title' => 'Reasons why choose ' . env('APP_NAME'),
-            'status' => 1
+            'status' => 0
         ],
         'featured_courses' => [
             'title' => 'Featured Courses',
@@ -118,7 +118,7 @@ return [
 
         'faq' => [
             'title' => 'Frequently Asked Questions',
-            'status' => 1
+            'status' => 0
         ],
         'testimonial' => [
             'title' => 'Testimonial',
@@ -131,11 +131,11 @@ return [
 
         'course_by_category' => [
             'title' => 'Course By Category',
-            'status' => 1
+            'status' => 0
         ],
         'contact_us' => [
             'title' => 'Contact us / Get in Touch',
-            'status' => 1
+            'status' => 0
         ],
     ],
     'layout_4' => [
