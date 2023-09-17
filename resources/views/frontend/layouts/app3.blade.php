@@ -73,6 +73,9 @@
                     background:#ff3333;
                     color: white;
                 }
+                .header-style-2 .nav-menu li a:hover {
+    color: #89181a;
+}
                 
                 .latest-news-area .date-meta, .course-title:after, .widget-title:after {
                    background-color: #ff3333;
