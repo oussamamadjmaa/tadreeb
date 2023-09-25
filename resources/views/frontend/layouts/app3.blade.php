@@ -61,38 +61,6 @@
         <link href="{{asset('assets/css/colors/color-9.css')}}" rel="alternate stylesheet" type="text/css"
               title="color-9">
               <style>
-              .bg-image:after {
-                  opacity:1;
-                  background:#00000080;
-              }
-                .header-top {
-                    background:#000;
-                }
-                .bg-theme-color{
-                    background-color: #ff3333;
-                    background:#ff3333;
-                    color: white;
-                }
-                .header-style-2 .nav-menu li a:hover {
-    color: #89181a;
-}
-                
-                .latest-news-area .date-meta, .course-title:after, .widget-title:after {
-                   background-color: #ff3333;
-                    background:#ff3333; 
-                }
-                
-                .bg-theme-color:hover, .genius-btn:hover, .subs-form .nws-button:hover{
-                    background-color: #ff333360;
-                    background:#ff3333;
-                }
-                .theme-color, .main-text, .select-lang select, .nav-menu-4 .login-cart-lang .login a, .course-meta .course-category, .latest-events .course-meta .course-author, .about-teacher-2 .section-title-2 h2 b, .testimonial-slide .student-name-designation span, .view-all-btn i, .teacher-img-content .teacher-category .st-name, .secound-teacher-section .teacher-img-text .teacher-designation, .teacher-pic-content .teacher-social-name li, .teacher-pic-content .teacher-name-designation .teacher-designation, .teacher-details-text .teacher-deg span, .best-product-section .price-start span, .best-sellers-pic-text .b-price, .panel-group .panel-title .btn-link, .panel-group .panel-title .btn-link:before, .panel-group .panel-title .btn-link:after, .panel-group .panel-title .btn-link:hover, .version-four .features-icon .feat-tag span, .blog-details-content .date-meta span, .blog-details-content .author-comment .author-designation-comment span, .blog-details-content .next-prev-post i, .blog-comment-area .author-name-rate span, .affiliate-market-accordion .panel-group .panel-title .btn-link span, .course-by b, .avrg-rating .avrg-rate, .course-side-bar-widget h3 span, .course-side-bar-widget h3 span, .student-number, .checkbox label .sub-text b, .terms-text b, .purchase-list .in-total span, .footer-menu li i{
-                    color: #ff3333!important;
-                }
-                 .textZoom{
-                     color: #ff3333;
-                     transition: all .2s ease-in-out;
-                 }
                 .textZoom:hover{
                     transform: scale(1.3);
                     border: 0;

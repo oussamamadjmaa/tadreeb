@@ -2,13 +2,17 @@
   'nav-menu' => 
   array (
     'blog' => 'Blog',
+    'courses' => 'Courses',
     'bundles' => 'Bundles',
     'forums' => 'Forums',
     'contact' => 'Contact',
     'about-us' => 'About Us',
     'aboutus' => 'aboutus',
     'cv' => 'cv',
-    'alryysy' => 'الرئيسية',
+    'alryysy' => 'Home',
+    'joinus' => 'Join us',
+    'trainers_join' => 'Join trainers',
+    'centers_join' => 'Join centers'
   ),
   'new-menu' => 
   array (
