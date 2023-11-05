@@ -35,6 +35,8 @@
 
                             <th>@lang('labels.backend.live_lesson_slots.student_name')</th>
 
+                            <th>@lang('Email')</th>
+
                             <th>@lang('Attendance days')</th>
 
                             <th>@lang('strings.backend.general.actions') &nbsp;</th>
@@ -123,7 +125,8 @@
                 ajax: route,
                 columns: [
                     {data: "DT_RowIndex", name: 'DT_RowIndex', searchable: false, orderable:false},
-                    {data: "full_name", name: 'full_name'},
+                    {data: "full_name", name: 'first_name'},
+                    {data: "email", name: 'email'},
                     {data: "attendance_days", name: 'attendance_days'},
                     {data: "actions", name: "actions"}
                 ],
