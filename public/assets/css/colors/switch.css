@@ -155,6 +155,13 @@
     border-radius: 100%;
 }
 
+.color-10 {
+    background: #bd9d40;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #d3a930, #bd9d40);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #d3a930, #bd9d40); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 100%;
+}
+
 
 .color-2 i,
 .color-3 i,
@@ -163,7 +170,8 @@
 .color-6 i,
 .color-7 i,
 .color-8 i, 
-.color-9 i {
+.color-9 i,
+.color-10 i {
  background-clip: text;
  -webkit-background-clip: text;
  -webkit-text-fill-color: transparent;

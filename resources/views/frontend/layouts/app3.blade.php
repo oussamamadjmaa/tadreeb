@@ -60,6 +60,8 @@
               title="color-8">
         <link href="{{asset('assets/css/colors/color-9.css')}}" rel="alternate stylesheet" type="text/css"
               title="color-9">
+        <link href="{{asset('assets/css/colors/color-10.css')}}" rel="alternate stylesheet" type="text/css"
+              title="color-10">
               <style>
                 .textZoom:hover{
                     transform: scale(1.3);

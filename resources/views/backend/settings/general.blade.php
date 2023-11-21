@@ -213,6 +213,13 @@
                                                         class="fas fa-circle"></i>
                                             </a>
                                         </li>
+
+                                        <li>
+                                            <a data-color="color-10" class="color-10"
+                                               onclick="setActiveStyleSheet('color-10'); return true;" href="#!"><i
+                                                        class="fas fa-circle"></i>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <input type="hidden" name="font_color" id="font_color" value="default">
                                     <span class="help-text font-italic">This will change frontend theme font colors</span>
